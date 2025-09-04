@@ -636,6 +636,8 @@ export interface ResolvedConfig
       /** @internal */
       safeModulePaths: Set<string>
       /** @internal */
+      additionalAllowedHosts: string[]
+      /** @internal */
       [SYMBOL_RESOLVED_CONFIG]: true
     } & PluginHookUtils
   > {}
@@ -1605,6 +1607,7 @@ export async function resolveConfig(
       },
     ),
     safeModulePaths: new Set<string>(),
+    additionalAllowedHosts: getAdditionalAllowedHosts(server, preview),
     [SYMBOL_RESOLVED_CONFIG]: true,
   }
   resolved = {
