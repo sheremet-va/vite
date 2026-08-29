@@ -76,6 +76,7 @@ class SSRCompatModuleRunner extends ModuleRunner {
   constructor(private environment: DevEnvironment) {
     super(
       {
+        rolldownRuntime: environment.config.isBundled,
         transport: createServerModuleRunnerTransport({
           channel: environment.hot as NormalizedServerHotChannel,
         }),
